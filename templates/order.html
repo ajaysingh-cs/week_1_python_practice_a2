@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> GSMS - New Order </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/UI/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Background image set kar di hai */
+            background-image: url('/UI/images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .custom-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eef2f5;
+        }
+        .brand-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4f46e5;
+            cursor: pointer;
+        }
+        .nav-menu a {
+            color: #64748b;
+            font-size: 20px;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: inline-block;
+            padding: 5px;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #4f46e5;
+        }
+        .order-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .form-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        .page-header-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #475569;
+            font-size: 14px;
+        }
+        .form-control, select {
+            height: 42px !important;
+            border-radius: 8px !important;
+            border: 1px solid #cbd5e0 !important;
+            font-size: 14px !important;
+        }
+        .item-grid-header {
+            display: grid;
+            grid-template-columns: 4fr 2fr 1.5fr 2.5fr 1fr;
+            gap: 15px;
+            background-color: #f8fafc;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #475569;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .product-item {
+            display: grid;
+            grid-template-columns: 4fr 2fr 1.5fr 2.5fr 1fr;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #f1f5f9;
+        }
+        .btn-action {
+            height: 40px;
+            padding: 0 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-add {
+            background-color: #f1f5f9;
+            color: #4f46e5;
+        }
+        .btn-add:hover {
+            background-color: #e2e8f0;
+        }
+        .btn-save {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+        .btn-save:hover {
+            opacity: 0.95;
+        }
+        .btn-remove-custom {
+            background-color: #fee2e2;
+            color: #ef4444;
+            border: none;
+            width: 100%;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .hideit {
+            display: none !important;
+        }
+        .total-section {
+            background-color: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .total-section span {
+            font-size: 15px;
+            font-weight: 600;
+            color: #065f46;
+        }
+        .total-section input {
+            background: transparent !important;
+            border: none !important;
+            font-size: 20px !important;
+            font-weight: 700 !important;
+            color: #047857 !important;
+            text-align: right;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="custom-navbar">
+    <div class="brand-title" onclick="window.location.href='/'">Grocery Store System</div>
+    <div class="nav-menu">
+        <a href="/" title="Dashboard" id="dashboardBtn"><i class="zmdi zmdi-view-dashboard"></i></a>
+        <a href="manage-product.html" title="Products"><i class="zmdi zmdi-assignment"></i></a>
+        <a href="/order" class="active" title="New Order"><i class="zmdi zmdi-plus-circle"></i></a>
+    </div>
+</div>
+
+<div class="order-container">
+    <div class="form-card">
+        <div class="page-header-title">Create New Order</div>
+        <form id="orderForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" name="customerName" id="customerName" class="form-control" placeholder="Enter customer name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; margin-bottom: 15px;">
+                <h4 style="font-weight: 600; font-size: 16px; margin: 0; color: #475569;">Items List</h4>
+                <button type="button" class="btn-action btn-add" id="addMoreButton">Add Product Row</button>
+            </div>
+
+            <div class="item-grid-header">
+                <div>Product</div>
+                <div>Price (Rs)</div>
+                <div>Quantity</div>
+                <div>Total (Rs)</div>
+                <div style="text-align: center;">Action</div>
+            </div>
+
+            <div class="product-box hideit">
+                <div class="product-item">
+                    <div>
+                        <select class="form-control cart-product" style="width: 100%;">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control product-price" value="0.0" readonly style="background-color: #f1f5f9;">
+                    </div>
+                    <div>
+                        <input type="number" class="form-control product-qty" value="1" min="1">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control product-total" value="0.0" readonly style="background-color: #f1f5f9;">
+                    </div>
+                    <div>
+                        <button type="button" class="btn-remove-custom remove-row"><i class="zmdi zmdi-delete"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-box-extra"></div>
+
+            <div class="total-section">
+                <span>Grand Total Amount</span>
+                <div>
+                    <span>Rs. </span>
+                    <input type="text" name="product_grand_total" id="product_grand_total" value="0.0" readonly style="pointer-events: none;">
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; text-align: right;">
+                <button type="button" class="btn-action btn-save" id="saveOrder" style="padding: 0 30px; height: 44px;">Save Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/UI/JS/custom/packages/jquery.min.js"></script>
+<script src="/UI/JS/custom/common.js"></script>
+<script src="/UI/JS/custom/order.js"></script>
+</body>
+</html>
